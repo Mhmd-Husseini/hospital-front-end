@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Hospital Patients Page</title>
+	<link rel="stylesheet" type="text/css" href="css/patients.css">
+</head>
+<body>
+	<header>
+		<h1>Hospital Patients Page</h1>
+	</header>
+	<main>
+		<h2>Welcome Patients!</h2>
+		<p>Please choose your department and room from the options below.</p>
+		<form>
+			<label for="department">Department:</label>
+			<select id="department">
+				<option value="cardiology">Cardiology</option>
+				<option value="neurology">Neurology</option>
+				<option value="oncology">Oncology</option>
+			</select><br><br>
+
+			<label for="room">Room:</label>
+			<select id="room">
+				<option value="101">101</option>
+				<option value="102">102</option>
+				<option value="103">103</option>
+			</select><br><br>
+
+			<label for="bed">Bed:</label>
+			<select id="bed">
+				<option value="1">1</option>
+				<option value="2">2</option>
+			</select><br><br>
+
+			<label for="medication">Medication:</label>
+			<select id="medication">
+				<option value="aspirin">Aspirin</option>
+				<option value="ibuprofen">Ibuprofen</option>
+				<option value="acetaminophen">Acetaminophen</option>
+			</select><br><br>
+
+			<label for="services">Request Services:</label>
+			<textarea id="services" rows="4" cols="50"></textarea><br><br>
+
+			<button type="submit">Submit</button>
+		</form>
+	</main>
+	<footer>
+		<p>&copy; 2023 Hospital Patients Page</p>
+	</footer>
+</body>
+</html>

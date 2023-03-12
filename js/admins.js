@@ -33,7 +33,7 @@ assignButton.addEventListener('click', () => {
     const patientId = patientDropdown.value;
     const hospitalId = hospitalDropdown.value;
 
-    axios.post('assign_patient.php', { patient_id: patientId, hospital_id: hospitalId })
+    axios.post('http://localhost/hospital-back-end/assign_patient.php', { patient_id: patientId, hospital_id: hospitalId })
         .then(response => {
             console.log(response.data);
             alert('Patient assigned successfully!');
@@ -93,7 +93,7 @@ axios
       .map((checkbox) => checkbox.value);
   
     axios
-      .post("api/assign_employee.php", {
+      .post("http://localhost/hospital-back-end/assign_employee.php", {
         employeeId: employeeId,
         selectedHospitals: selectedHospitals,
       })

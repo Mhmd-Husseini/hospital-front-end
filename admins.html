@@ -18,8 +18,24 @@
             <option value="">--Select a Hospital--</option>
         </select>
         <br><br>
-        <button type="button" id="assign-patient">Assign Patient</button>
+        <button type="button" id="assign-patient">Assign Patient</button>  
     </form>
+
+    <h1>Assign Employee to Hospital(s)</h1>
+    <form id="assign-form">
+        <label for="employee">Select Employee:</label>
+        <select id="employee">
+            <option value="">--Select an Employee--</option>
+        </select>
+        <br><br>
+        <label>Select Hospital(s):</label>
+        <div id="hospitals">
+
+        </div>
+        <br><br>
+        <button type="button" id="assign-btn">Assign Employee</button>
+    </form>
+
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="js/admins.js"></script>
 </body>

@@ -44,26 +44,15 @@ assignButton.addEventListener('click', () => {
         });
 });
 
-// Assign Employee Page
-
-// Get the select elements for employee and hospitals
 const employeeSelect = document.getElementById("employee");
 const hospitalCheckboxes = document.querySelectorAll(".hospital-checkbox");
-
-// Get the button to assign employee
 const assignEmployeeButton = document.getElementById("assign-btn");
-
-// Add event listener to assignEmployeeButton
 assignEmployeeButton.addEventListener("click", assignEmployee);
 
-// Function to assign employee to selected hospitals
-
-// Fetch the list of employees from the API endpoint
 axios
   .get("http://localhost/hospital-back-end/get_employees.php")
   .then((response) => {
     const employees = response.data;
-    // Add each employee as an option to the select element
     employees.forEach((employee) => {
       const option = document.createElement("option");
       option.value = employee.id;
@@ -99,13 +88,10 @@ axios
 
   function assignEmployee() {
     const employeeId = employeeSelect.value;
-  
-    // Get an array of the selected hospitals
-    const selectedHospitals = Array.from(hospitalCheckboxes)
+      const selectedHospitals = Array.from(hospitalCheckboxes)
       .filter((checkbox) => checkbox.checked)
       .map((checkbox) => checkbox.value);
   
-    // Send the data to the API endpoint
     axios
       .post("api/assign_employee.php", {
         employeeId: employeeId,
@@ -121,3 +107,29 @@ axios
       });
   }
   
+  axios.get("http://localhost/hospital-back-end/get_employees.php")
+  .then((response) => {
+    const employees = response.data;
+    const numFemaleEmployees = employees.reduce((acc, curr) => {
+      return curr.gender === "female" ? acc + 1 : acc;
+    }, 0);
+    const female=document.querySelector("#female");
+    female.textContent= ` ${numFemaleEmployees}`;
+  })
+  .catch((error) => {
+    console.error(error);
+    alert("Error fetching employee data");
+  });
+  axios.get("http://localhost/hospital-back-end/get_employees.php")
+  .then((response) => {
+    const employees = response.data;
+    const nummaleEmployees = employees.reduce((acc, curr) => {
+      return curr.gender === "male" ? acc + 1 : acc;
+    }, 0);
+    const male= document.querySelector("#male");
+    male.textContent= ` ${nummaleEmployees}`;
+  })
+  .catch((error) => {
+    console.error(error);
+    alert("Error fetching employee data");
+  });

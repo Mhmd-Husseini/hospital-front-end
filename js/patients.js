@@ -1,7 +1,6 @@
 const departmentDropdown = document.getElementById('department');
 const roomDropdown = document.getElementById('room');
 const bedDropdown = document.getElementById('bed');
-
 const assignButton = document.getElementById('choose-room');
 
 axios.get('http://localhost/hospital-back-end/get_department_room_bed.php')
@@ -37,7 +36,7 @@ assignnButton.addEventListener('click', (event) => {
   const roomId = roomDropdown.value;
   const bedId = bedDropdown.value;
 
-  axios.post('http://localhost/hospital-back-end/reserve_room.php', {
+  axios.post('http://localhost/hospital-back-end/patient_reserve.php', {
       patient_id: patientId,
       department_id: departmentId,
       room_id: roomId,
@@ -51,5 +50,34 @@ assignnButton.addEventListener('click', (event) => {
     });
 });
 
-
+axios
+  .get("http://localhost/hospital-back-end/get_medications.php")
+  .then((response) => {
+    const medications = response.data;
+    medications.forEach((medication) => {
+      const checkbox = document.createElement("input");
+      checkbox.type = "checkbox";
+      checkbox.value = medication.id;
+      checkbox.className = "hospital-checkbox";
+      const label = document.createElement("label");
+      label.textContent = medication.name;
+      label.prepend(checkbox);
+      const form = document.getElementById("reserve_medication");
+      form.insertBefore(label, form.lastChild);
+    });
+  })
+  .catch((error) => {
+    console.error(error);
+    alert("Error fetching hospitals");
+  });
   
+  axios.post('http://localhost/hospital-back-end/medication_reserve.php', { 
+    user_id: userId, medication_id: medicationId, quantity: quaantity })
+      .then(response => {
+          console.log(response.data);
+          alert('Patient assigned successfully!');
+      })
+      .catch(error => {
+          console.error(error);
+          alert('Error assigning patient. Please try again later.');
+      });

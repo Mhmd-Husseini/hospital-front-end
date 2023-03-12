@@ -6,34 +6,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Hospital Patients Page</title>
 	<link rel="stylesheet" type="text/css" href="css/patients.css">
+	<link rel="stylesheet" type="text/css" href="css/admins.css">
+
 </head>
 <body>
 	<header>
 		<h1>Hospital Patients Page</h1>
 	</header>
 	<main>
-		<h2>Welcome Patients!</h2>
-		<p>Please choose your department and room from the options below.</p>
-		<form>
+		<h2>Welcome!</h2>
+		<p>Please choose your department, room and bed from the options below.</p>
+		<form id="reserve-room">
 			<label for="department">Department:</label>
 			<select id="department">
-				<option value="cardiology">Cardiology</option>
-				<option value="neurology">Neurology</option>
-				<option value="oncology">Oncology</option>
+				<option value="">--Select a Department--</option>
 			</select><br><br>
 
 			<label for="room">Room:</label>
+			  <option value="">--Select a Room--</option>
 			<select id="room">
-				<option value="101">101</option>
-				<option value="102">102</option>
-				<option value="103">103</option>
+
 			</select><br><br>
 
 			<label for="bed">Bed:</label>
+			   <option value="">--Select a Bed--</option>
 			<select id="bed">
-				<option value="1">1</option>
-				<option value="2">2</option>
+
 			</select><br><br>
+			<button id="choose-room" type="submit">Submit</button>
+		</form>
 
 			<label for="medication">Medication:</label>
 			<select id="medication">
@@ -44,12 +45,11 @@
 
 			<label for="services">Request Services:</label>
 			<textarea id="services" rows="4" cols="50"></textarea><br><br>
-
-			<button type="submit">Submit</button>
-		</form>
 	</main>
 	<footer>
 		<p>&copy; 2023 Hospital Patients Page</p>
 	</footer>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="js/patients.js"></script>
 </body>
 </html>

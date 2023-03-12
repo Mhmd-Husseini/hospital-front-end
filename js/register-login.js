@@ -35,7 +35,7 @@ loginBtn.addEventListener('click', (event) => {
   const email = document.getElementById('login-email').value;
   const password = document.getElementById('login-password').value;
 
-  axios.post('login.php', {
+  axios.post('http://localhost/hospital-back-end/login.php', {
     email: email,
     password: password
   })
